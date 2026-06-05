@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-cicd-app-service
+spec:
+  selector:
+    app: python-cicd-app
+  type: LoadBalancer     # AWS will provision an ELB automatically
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000

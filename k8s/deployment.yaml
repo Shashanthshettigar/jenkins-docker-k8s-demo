@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-cicd-app
+  labels:
+    app: python-cicd-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: python-cicd-app
+  template:
+    metadata:
+      labels:
+        app: python-cicd-app
+    spec:
+      containers:
+        - name: python-cicd-app
+          image: PLACEHOLDER_IMAGE   # replaced by Jenkins at deploy time
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              cpu: "100m"       # minimum CPU guaranteed to this container
+              memory: "128Mi"   # minimum memory guaranteed
+            limits:
+              cpu: "250m"       # hard cap — container never exceeds this
+              memory: "256Mi"   # OOMKilled if exceeded
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 10
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
