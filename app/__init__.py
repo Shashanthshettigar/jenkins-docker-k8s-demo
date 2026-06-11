@@ -6,7 +6,7 @@ def create_app():
 
     @app.route("/")
     def home():
-        return jsonify({"message": "Hello from flask-cicd-eks!", "status": "ok"})
+        return jsonify({"message": "Hello from CI/CD pipeline!", "status": "ok"})
 
     @app.route("/health")
     def health():
