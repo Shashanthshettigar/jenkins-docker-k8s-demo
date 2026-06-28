@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     environment {
-        AWS_REGION   = ""
+        AWS_REGION   = "your_region"
         AWS_ACCOUNT  = credentials("AWS_ACCOUNT_ID")
         ECR_REPO     = "${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com/python-cicd-app"
         IMAGE_TAG    = "${env.BUILD_NUMBER}"
