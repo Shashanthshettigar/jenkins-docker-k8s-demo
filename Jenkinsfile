@@ -4,7 +4,7 @@ pipeline {
 
     environment {
         AWS_REGION   = "your_region"
-        AWS_ACCOUNT  = "aws_account_id"  // 12-digit account ID
+        AWS_ACCOUNT  = credentials("AWS_ACCOUNT_ID")
         ECR_REPO     = "${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com/python-cicd-app"
         IMAGE_TAG    = "${env.BUILD_NUMBER}"
         EKS_CLUSTER  = "eks_cluster_name"        // replace with your cluster name
