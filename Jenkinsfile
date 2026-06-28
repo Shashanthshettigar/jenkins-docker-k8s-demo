@@ -9,7 +9,7 @@ pipeline {
         IMAGE_TAG    = "${env.BUILD_NUMBER}"
         EKS_CLUSTER  = "eks_cluster_name"        // replace with your cluster name
     }
-
+    
     stages {
 
         stage("Checkout") {
